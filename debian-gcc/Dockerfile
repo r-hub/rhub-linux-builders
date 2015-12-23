@@ -29,6 +29,8 @@ RUN apt-get update \
 		default-jdk \
 		libbz2-dev \
 		libcairo2-dev \
+		libcurl4-openssl-dev \
+		libicu-dev \
 		libjpeg-dev \
 		libpcre3-dev \
 		libpng-dev \
@@ -42,8 +44,11 @@ RUN apt-get update \
 		texinfo \
 		texlive-base \
 		texlive-fonts-extra \
+		texlive-fonts-recommended \
 		texlive-latex-base \
+		texlive-latex-recommended \
 		tk8.6-dev \
+		x11proto-core-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
 ## Configure default locale,
