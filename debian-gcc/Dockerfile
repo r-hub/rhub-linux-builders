@@ -48,6 +48,7 @@ RUN apt-get update \
 		texlive-latex-base \
 		texlive-latex-recommended \
 		tk8.6-dev \
+		unzip \
 		x11proto-core-dev \
 	&& rm -rf /var/lib/apt/lists/*
 
