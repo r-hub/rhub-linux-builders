@@ -36,4 +36,4 @@ RUN cd R-${RVERSION}                                             \
 	&& make                                                  \
 	&& make install
 
-ENV RHUB_PLATFORM linux-x86_64-debian-gcc.json
+ENV RHUB_PLATFORM linux-x86_64-debian-gcc
