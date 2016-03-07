@@ -35,3 +35,5 @@ RUN cd R-${RVERSION}                                             \
 	./configure --prefix=${RPREFIX} ${ROPTIONS}              \
 	&& make                                                  \
 	&& make install
+
+ENV RHUB_PLATFORM linux-x86_64-debian-gcc.json
