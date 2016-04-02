@@ -5,9 +5,9 @@ FROM rhub/debian-gcc
 MAINTAINER "r-hub admin" admin@r-hub.io
 
 ENV CRAN http://cran.r-project.org
-ENV RVERSION 3.2.3
+ENV RVERSION 3.2.4-revised
 
-RUN rm -rf R-${RVERSION} R-${RVERSION}.tar.gz \
+RUN rm -rf R-revised R-${RVERSION} R-${RVERSION}.tar.gz \
         && major=$(echo $RVERSION | sed 's/\..*$//') \
         && url="${CRAN}/src/base/R-${major}/R-${RVERSION}.tar.gz" \
         && curl -O "$url" \
@@ -17,7 +17,7 @@ ENV RPREFIX /opt/R-${RVERSION}
 
 ENV ROPTIONS --with-recommended-packages=no
 
-RUN cd R-${RVERSION}                                             \
+RUN cd R-revised || cd R-${RVERSION}                             \
 	&& R_PAPERSIZE=letter                                    \
 	R_BATCHSAVE="--no-save --no-restore"                     \
 	PERL=/usr/bin/perl                                       \
