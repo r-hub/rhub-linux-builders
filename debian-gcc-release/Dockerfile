@@ -15,6 +15,11 @@ RUN rm -rf R-revised R-${RVERSION} R-${RVERSION}.tar.gz \
 
 ENV RPREFIX /opt/R-${RVERSION}
 
+ENV CC gcc-5
+ENV CXX g++-5
+ENV F77 gfortran-5
+ENV CPP cpp-5
+
 ENV ROPTIONS --with-recommended-packages=no
 
 RUN cd R-revised || cd R-${RVERSION}                             \

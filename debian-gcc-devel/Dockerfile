@@ -13,6 +13,11 @@ ENV RPREFIX /opt/R-devel
 
 ENV ROPTIONS --with-recommended-packages=no
 
+ENV CC gcc-5
+ENV CXX g++-5
+ENV F77 gfortran-5
+ENV CPP cpp-5
+
 RUN cd /tmp/R-devel \
     && R_PAPERSIZE=letter                                    \
     R_BATCHSAVE="--no-save --no-restore"                     \
