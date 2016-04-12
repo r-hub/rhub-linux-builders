@@ -20,4 +20,4 @@ RUN cd /tmp/R-devel \
     && make                                                  \
     && make install
 
-ENV RHUB_PLATFORM linux-x86_64-debian-gcc
+ENV RHUB_PLATFORM linux-x86_64-fedora-gcc
