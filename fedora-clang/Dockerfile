@@ -41,7 +41,8 @@ RUN dnf install -y \
 	texlive-ec \
 	texlive-parskip \
 	texlive-collection-fontsrecommended \
-	which
+	which \
+	xorg-x11-server-Xvfb
 
 RUN dnf install -y \
 	dnf-plugins-core

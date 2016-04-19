@@ -43,7 +43,8 @@ RUN dnf install -y \
 	texlive-ec \
 	texlive-parskip \
 	texlive-collection-fontsrecommended \
-	which
+	which \
+	xorg-x11-server-Xvfb
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8

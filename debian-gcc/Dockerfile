@@ -50,6 +50,7 @@ RUN apt-get update \
 		tk8.6-dev \
 		unzip \
 		x11proto-core-dev \
+		xvfb \
 	&& rm -rf /var/lib/apt/lists/*
 
 ## Configure default locale,
