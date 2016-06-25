@@ -7,7 +7,7 @@ MAINTAINER "r-hub admin" admin@r-hub.io
 ENV CRAN http://cran.r-project.org
 
 RUN cd /tmp \
-    && svn co http://svn.r-project.org/R/trunk R-devel
+    && svn co https://svn.r-project.org/R/trunk R-devel
 
 ENV RPREFIX /opt/R-devel
 
