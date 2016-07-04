@@ -1,0 +1,26 @@
+sudo: required
+
+services:
+  - docker
+
+language: c
+
+env:
+  global:
+  - DOCKER_EMAIL=csardi.gabor@gmail.com
+  - secure: fdrn5Q07oc+vj/RuKkFyLGo3BN2/GWh4Fl16ByXQFWq4F+ehUW8UE9JsyBDK5bBCRmiLX/hKK9+iqfogeDwi05HYPq1SR/wdu5vSRKTRvFbGEpIjHTe35yGjNIbF4AgIGYlTIWIvC7ZLJD3BaWFpNd16S17O9yi24CwFkyjYkwha9qIjT3jw81Iv/FvSx6qWV/XQBXo9JZ7WCy/wsh2INVzpqdKTCgC+Ug//KSxFYMW6A2zv6HPbUVv/mef4dLCZXW1TEwB0UVvXBeXWw004rhWKhrkRSvPIj5y/wU1+xYQtbenXxhBx88es8s1M7OkTTDBWJ6Y3J4G4JeoxDKdxjlp2ij44Cf65ynkQXnF4PEUTVgSjaKiojKCusWL/NoRVI2hHDkC4I8RXTtJ38HL7x6i/jB1DFDHrFt3q4jdXd2RZhfPC4DYpgNexGX+FHre2OSUZ1Cn9MlgyX3CKpet0kzYytMim6J77yD9YRFsKeSI+FCoSFsvi2t8H5Maf5mkS4YvQwLDEcYzCkbGWc18n0izF/Lrf+v6WCtU/OtRWdwkcWRQCmNgk8eGVk/xwC9QLTLDm1qt38RAyzGZCHPMlQYeKFgunSJZn5YImA3IlDPVAAuzZ8jCFXvlDgsZgONIe8r4j9hCDDhG+PftN60EjRzmflunsGWg0QK9EIWpdXVU=
+  - secure: fEOVyze2UDGOaTWqcseEA1IlK8ugXqxBC5JUjkRuGNZ/Rf18VDvvLcQ+FYT9yqEJ15zA3SrnqXMSguF86oukpMmeM1CJB8de+hQPkPpVDrHE8+rcmNQ5RHQY6gptFf0UdMDJp+7E51fWxbRZ6sDc7+rzF9G2CVAJifuAEvKgP4+pz4iYM73xiFtqiZmmESpQuPGfGwgftNtS14DCJIyJcmaUPLXG4CVKhYdnYzmo874zlhA1D3v38kM/3EcJEDaCAqzmWK61AOlfVeH+U8I4rwbW4RXiam9Jr6rB+ZF2/GMw3N7cm1mDHsrj3X3CieOlAoAglpfgD9iToz0na9FforFB0NjDtlODKtUVRGv8jjeBhhYsspIvdzaolR2kH2Y89aYaMsFcOEI5FT/P3oYxIQKVUYQHxy338JayTDoeF1bRKN4mlE3iNUGr0LXUUTdKmbh683nAUEjk09zBd4AFI1ZjfiHczzj4HzgMg4NBc2E7KX+XO+E2SqDsh47/hmrY6kkah6rD2imDJT5EIUpLW3XbJ6Bxy/HleyFggGRAJ6M0dO5YGDb9RByJQQiFFnXqjlb0Ce3nDDd9gFV6hO0/3qbWyqrnge+QOCEDRhM1im7yMfJHYC2QYlZwM4j60sEHIaHihMQzEnozdifWEdIxs3B42InC1j+kEauVQDuRkzc=
+
+script:
+  - export PR=https://api.github.com/repos/$TRAVIS_REPO_SLUG/pulls/$TRAVIS_PULL_REQUEST
+  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo `curl -s $PR | jq -r .head.ref`; fi)
+  - echo "TRAVIS_BRANCH=$TRAVIS_BRANCH, PR=$PR, BRANCH=$BRANCH"
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+  - ./build-image.sh debian-gcc         || true
+  - ./build-image.sh debian-gcc-devel   || true
+  - ./build-image.sh fedora-clang       || true
+  - ./build-image.sh fedora-clang-devel || true
+  - ./build-image.sh fedora-gcc         || true
+  - ./build-image.sh fedora-gcc-devel   || true
+
+## We do not build debian-gcc-release, at least not periodically
