@@ -43,9 +43,12 @@ RUN apt-get update \
 		tcl8.6-dev \
 		texinfo \
 		texlive-base \
+		texlive-extra-utils \
 		texlive-fonts-extra \
 		texlive-fonts-recommended \
+		texlive-generic-recommended \
 		texlive-latex-base \
+		texlive-latex-extra \
 		texlive-latex-recommended \
 		tk8.6-dev \
 		unzip \
