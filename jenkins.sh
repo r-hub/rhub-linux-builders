@@ -20,3 +20,5 @@ docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 ./build-image.sh ubuntu-gcc         || true
 ./build-image.sh ubuntu-gcc-devel   || true
 # ./build-image.sh ubuntu-gcc-release || true
+
+/build-image.sh rocker-gcc-san      || true
