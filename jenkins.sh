@@ -14,7 +14,9 @@ docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
 ./build-image.sh fedora-clang-devel || true
 ./build-image.sh fedora-gcc         || true
 ./build-image.sh fedora-gcc-devel   || true
+
 ./build-image.sh centos6-epel       || true
+./build-image.sh centos6-epel-rdt   || true
 
 ./build-image.sh ubuntu             || true
 ./build-image.sh ubuntu-gcc         || true
