@@ -1,4 +1,4 @@
-FROM rocker:r-devel-san
+FROM rocker/r-devel-san:latest
 
 RUN useradd docker \
 	&& mkdir /home/docker \
