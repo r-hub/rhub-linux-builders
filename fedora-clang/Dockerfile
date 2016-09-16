@@ -1,6 +1,6 @@
 ## Emacs, make this -*- mode: sh; -*-
 
-FROM fedora:22
+FROM fedora:latest
 
 ## Set a default user. Available via runtime flag
 RUN useradd docker
