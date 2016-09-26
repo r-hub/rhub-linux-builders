@@ -47,12 +47,10 @@ RUN dnf install -y \
 RUN dnf install -y \
 	dnf-plugins-core
 
-RUN dnf copr enable -y alonid/llvm-3.8.0
-
 RUN dnf install -y \
-	llvm-3.8.0 \
-	clang-3.8.0 \
-	compiler-rt-3.8.0
+	llvm \
+	clang \
+	compiler-rt
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
