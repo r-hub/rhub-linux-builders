@@ -13,8 +13,8 @@ ENV RPREFIX /opt/R-devel
 
 ENV ROPTIONS --with-recommended-packages=no
 
-ENV CC /opt/llvm-3.8.0/bin/clang
-ENV CXX /opt/llvm-3.8.0/bin/clang++
+ENV CC /usr/bin/clang
+ENV CXX /usr/bin/clang++
 ENV F77 gfortran
 ENV CPP cpp
 
