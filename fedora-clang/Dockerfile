@@ -52,5 +52,7 @@ RUN dnf install -y \
 	clang \
 	compiler-rt
 
+RUN dnf install -y glibc-langpack-en.x86_64
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8

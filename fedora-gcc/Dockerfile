@@ -46,5 +46,7 @@ RUN dnf install -y \
 	which \
 	xorg-x11-server-Xvfb
 
+RUN dnf install -y glibc-langpack-en.x86_64
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
