@@ -54,8 +54,11 @@ RUN apt-get update \
 		unzip \
 		x11proto-core-dev \
 		xauth \
-		xvfb \
-	&& rm -rf /var/lib/apt/lists/*
+		xvfb
+
+RUN apt-get install -y --no-install-recommends valgrind
+
+RUN rm -rf /var/lib/apt/lists/*
 
 ## Configure default locale,
 ## see https://github.com/rocker-org/rocker/issues/19
