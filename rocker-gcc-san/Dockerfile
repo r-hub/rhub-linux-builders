@@ -6,3 +6,7 @@ RUN apt-get update \
 
 ENV RHUB_PLATFORM linux-x86_64-debian-gcc
 ENV RBINARY /usr/local/bin/RD
+
+ADD san.sh /usr/local/bin/
+
+ENV RHUB_CHECK_COMMAND san.sh
