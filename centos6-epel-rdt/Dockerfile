@@ -10,6 +10,9 @@ RUN \
   yum install -y centos-release-scl && \
   yum install -y devtoolset-4-gcc-c++
 
+RUN \
+  yum install -y valgrind
+
 RUN echo "source /opt/rh/devtoolset-4/enable" >> /etc/bashrc
 
 ENV RHUB_PLATFORM linux-x86_64-centos6-epel

@@ -4,5 +4,7 @@ RUN apt-get update \
       && apt-get install -y --no-install-recommends \
            curl
 
+RUN apt-get install -y --no-install-recommends valgrind
+
 ENV RHUB_PLATFORM linux-x86_64-debian-gcc
 ENV RBINARY /usr/local/bin/RD
