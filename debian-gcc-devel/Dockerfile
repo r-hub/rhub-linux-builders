@@ -17,6 +17,7 @@ ENV CC gcc-5
 ENV CXX g++-5
 ENV F77 gfortran-5
 ENV CPP cpp-5
+ENV FC gfortran-5
 
 RUN cd /tmp/R-devel \
     && R_PAPERSIZE=letter                                    \
@@ -29,6 +30,7 @@ RUN cd /tmp/R-devel \
     CC="gcc-5"                                               \
     CXX="g++-5"                                              \
     F77="gfortran-5"                                         \
+    FC="gfortran-5"                                          \
     CPP="cpp-5"                                              \
     CFLAGS="-std=gnu99 -Wall -pedantic"                      \
     CXXFLAGS="-Wall -pedantic"                               \
