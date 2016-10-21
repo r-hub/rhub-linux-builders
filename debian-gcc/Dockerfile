@@ -58,6 +58,8 @@ RUN apt-get update \
 
 RUN apt-get install -y --no-install-recommends valgrind
 
+RUN apt-get install -y --no-install-recommends qpdf
+
 RUN rm -rf /var/lib/apt/lists/*
 
 ## Configure default locale,

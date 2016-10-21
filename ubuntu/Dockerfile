@@ -55,6 +55,8 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen en_US.utf8 && /usr
 
 RUN apt-get install -y --no-install-recommends valgrind
 
+RUN apt-get install -y --no-install-recommends qpdf
+
 RUN rm -rf /var/lib/apt/lists/*
 
 ENV LC_ALL en_US.UTF-8

@@ -9,4 +9,7 @@ RUN \
 RUN \
   yum install -y valgrind
 
+RUN \
+  yum install -y qpdf
+
 ENV RHUB_PLATFORM linux-x86_64-centos6-epel

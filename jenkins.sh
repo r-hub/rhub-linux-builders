@@ -11,7 +11,7 @@ docker ps -a | grep 'Exited' |  awk ' { print $1; } ' | xargs docker rm || true
 
 ./build-image.sh debian-gcc         || true
 ./build-image.sh debian-gcc-devel   || true
-# ./build-image.sh debian-gcc-release || true
+./build-image.sh debian-gcc-release || true
 ./build-image.sh debian-gcc-patched || true
 
 ./build-image.sh fedora-clang       || true
@@ -25,6 +25,6 @@ docker ps -a | grep 'Exited' |  awk ' { print $1; } ' | xargs docker rm || true
 ./build-image.sh ubuntu             || true
 ./build-image.sh ubuntu-gcc         || true
 ./build-image.sh ubuntu-gcc-devel   || true
-# ./build-image.sh ubuntu-gcc-release || true
+./build-image.sh ubuntu-gcc-release || true
 
 ./build-image.sh rocker-gcc-san      || true

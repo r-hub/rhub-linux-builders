@@ -6,6 +6,8 @@ RUN apt-get update \
 
 RUN apt-get install -y --no-install-recommends valgrind
 
+RUN apt-get install -y --no-install-recommends qpdf
+
 ENV RHUB_PLATFORM linux-x86_64-debian-gcc
 ENV RBINARY /usr/local/bin/RD
 

@@ -13,6 +13,9 @@ RUN \
 RUN \
   yum install -y valgrind
 
+RUN \
+  yum install -y qpdf
+
 RUN echo "source /opt/rh/devtoolset-4/enable" >> /etc/bashrc
 
 ENV RHUB_PLATFORM linux-x86_64-centos6-epel

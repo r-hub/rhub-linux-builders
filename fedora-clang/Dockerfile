@@ -56,5 +56,7 @@ RUN dnf install -y glibc-langpack-en.x86_64
 
 RUN dnf install -y valgrind
 
+RUN dnf install -y qpdf
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
