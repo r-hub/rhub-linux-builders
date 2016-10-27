@@ -19,19 +19,26 @@ RUN useradd docker \
 
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
-		gcc-5 \
-		g++-5 \
-		gfortran-5 \
-		less \
-		locales \
+	        bison \
 		ca-certificates \
 		curl \
+		debhelper \
 		default-jdk \
+                gcc \
+		g++ \
+		gfortran \
+		groff-base \
+		less \
+		libblas-dev \
 		libbz2-dev \
 		libcairo2-dev \
 		libcurl4-openssl-dev \
 		libicu-dev \
 		libjpeg-dev \
+		liblapack-dev \
+		liblzma-dev \
+		libncurses5-dev \
+		libpango1.0-dev \
 		libpcre3-dev \
 		libpng-dev \
 		libreadline-dev \
@@ -39,6 +46,9 @@ RUN apt-get update \
 		libx11-dev \
 		libxt-dev \
 		lmodern \
+		locales \
+		mpack \
+		qpdf \
 		subversion \
 		tcl8.6-dev \
 		texinfo \
@@ -51,14 +61,16 @@ RUN apt-get update \
 		texlive-latex-extra \
 		texlive-latex-recommended \
 		tk8.6-dev \
+		valgrind \
 		unzip \
 		x11proto-core-dev \
 		xauth \
-		xvfb
+		xdg-utils \
+		xfonts-base \
+		xvfb \
+		zlib1g-dev
 
-RUN apt-get install -y --no-install-recommends valgrind
-
-RUN apt-get install -y --no-install-recommends qpdf
+RUN apt-get install -y --no-install-recommends fonts-texgyre
 
 RUN rm -rf /var/lib/apt/lists/*
 
