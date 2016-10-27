@@ -8,13 +8,10 @@ RUN \
 
 RUN \
   yum install -y centos-release-scl && \
-  yum install -y devtoolset-4-gcc-c++
+  yum install -y devtoolset-4-gcc-c++ devtoolset-4-gcc-gfortran.x86_64
 
 RUN \
-  yum install -y valgrind
-
-RUN \
-  yum install -y qpdf
+  yum install -y valgrind qpdf
 
 RUN echo "source /opt/rh/devtoolset-4/enable" >> /etc/bashrc
 
