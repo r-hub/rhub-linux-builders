@@ -52,5 +52,7 @@ RUN dnf install -y valgrind
 
 RUN dnf install -y qpdf
 
+RUN dnf install -y pandoc pandoc-citeproc
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8

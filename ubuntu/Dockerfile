@@ -72,6 +72,8 @@ RUN apt-get install -y --no-install-recommends valgrind
 
 RUN apt-get install -y --no-install-recommends qpdf
 
+RUN apt-get install -y --no-install-recommends pandoc pandoc-citeproc
+
 RUN rm -rf /var/lib/apt/lists/*
 
 ENV LC_ALL en_US.UTF-8

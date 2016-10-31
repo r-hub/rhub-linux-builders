@@ -72,6 +72,8 @@ RUN apt-get update \
 
 RUN apt-get install -y --no-install-recommends fonts-texgyre
 
+RUN apt-get install -y --no-install-recommends pandoc pandoc-citeproc
+
 RUN rm -rf /var/lib/apt/lists/*
 
 ## Configure default locale,
