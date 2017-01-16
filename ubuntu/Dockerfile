@@ -4,7 +4,10 @@ FROM ubuntu:16.04
 
 MAINTAINER "r-hub admin" admin@r-hub.io
 
-RUN apt-add-repository multiverse
+RUN apt-get update \
+        && apt-get install -y --no-install-recommends \
+	        software-properties-common \
+	&& apt-add-repository multiverse
 
 ## Set a default user. Available via runtime flag
 ## Add user to 'staff' group, granting them write privileges to
