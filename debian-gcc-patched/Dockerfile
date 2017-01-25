@@ -12,7 +12,7 @@ RUN curl -O https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
 
 ENV RPREFIX /opt/R-patched
 
-ENV ROPTIONS --with-recommended-packages=no
+ENV ROPTIONS --with-recommended-packages=no --enable-R-shlib --enable-R-static-lib
 
 RUN cd R-patched || cd R-rc                                      \
         && R_PAPERSIZE=letter                                    \

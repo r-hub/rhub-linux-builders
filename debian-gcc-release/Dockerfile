@@ -15,7 +15,7 @@ RUN rm -rf R-revised R-${RVERSION} R-${RVERSION}.tar.gz \
 
 ENV RPREFIX /opt/R-${RVERSION}
 
-ENV ROPTIONS --with-recommended-packages=no
+ENV ROPTIONS --with-recommended-packages=no --enable-R-shlib --enable-R-static-lib
 
 RUN cd R-revised || cd R-${RVERSION}                             \
 	&& R_PAPERSIZE=letter                                    \
