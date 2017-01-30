@@ -40,4 +40,4 @@ RUN echo "deb https://files.r-hub.io/pandoc/ubuntu-16.04/ amd64/" > \
     apt-get -y --allow-unauthenticated install pandoc pandoc-citeproc
 
 ENV RHUB_PLATFORM linux-x86_64-ubuntu-gcc
-ENV RHUB_CRAN "c('https://cranbinaries.r-hub.io/linux/ubuntu16.04-R33x/','https://jenkins.iotwjus4p5merbek114fbzbqud.dx.internal.cloudapp.net/','https://cran.r-project.org')"
+ENV RHUB_BINARIES yes
