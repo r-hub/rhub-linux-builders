@@ -1,8 +1,9 @@
 FROM rocker/r-devel-san:latest
 
-RUN apt-get update \
-      && apt-get install -y --no-install-recommends \
-           curl
+## Fix a rocker bug (?)
+RUN rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update -m && apt-get install -y curl
 
 RUN apt-get install -y --no-install-recommends valgrind
 
