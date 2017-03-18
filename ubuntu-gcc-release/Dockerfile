@@ -32,7 +32,7 @@ RUN cd R-${RVERSION}                                             \
 	&& make                                                  \
 	&& make install
 
-RUN apt-get -y install apt-transport-https
+RUN apt-get update && apt-get -y install apt-transport-https
 
 RUN echo "deb https://files.r-hub.io/pandoc/ubuntu-16.04/ amd64/" > \
        /etc/apt/sources.list.d/rhub-pandoc-ubuntu-16.04.list &&     \
