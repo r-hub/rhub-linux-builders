@@ -1,6 +1,6 @@
 #! /bin/sh
 
-docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
+docker login -u $DOCKER_USER -p $DOCKER_PASS
 
 # Clean up unused Docker images and containers
 docker images  | grep -v latest | awk ' { print $3; } ' | xargs docker rmi || true
