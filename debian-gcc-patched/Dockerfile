@@ -5,7 +5,7 @@ FROM rhub/debian-gcc
 MAINTAINER "r-hub admin" admin@r-hub.io
 
 ENV CRAN http://cran.r-project.org
-ENV RVERSION 3.3.2
+ENV RVERSION patched
 
 RUN curl -O https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
     && tar xjf R-patched.tar.bz2
