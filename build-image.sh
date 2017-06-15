@@ -7,5 +7,5 @@ REPO="$1"
 shift
 cd "$REPO"
 
-docker build "$@" -t rhub/"$REPO" .
+docker build --pull -t rhub/"$REPO" "$@" .
 docker push rhub/"$REPO"
