@@ -20,9 +20,4 @@ RUN cd /tmp/R-devel \
     && make                                                  \
     && make install
 
-RUN dnf remove -y pandoc pandoc-citeproc && \
-    curl -o /etc/yum.repos.d/rhub-pandoc-fedora24.repo                    \
-      https://files.r-hub.io/pandoc/fedora24/rhub-pandoc-fedora24.repo && \
-    dnf install -y pandoc pandoc-citeproc
-
 ENV RHUB_PLATFORM linux-x86_64-fedora-gcc
