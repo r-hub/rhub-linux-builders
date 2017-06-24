@@ -77,7 +77,15 @@ RUN apt-get install -y --no-install-recommends valgrind
 
 RUN apt-get install -y --no-install-recommends qpdf
 
-RUN apt-get install -y --no-install-recommends pandoc pandoc-citeproc
+RUN curl -o /usr/bin/pandoc.gz \
+         https://files.r-hub.io/pandoc/linux-64/pandoc.gz && \
+    gzip -d /usr/bin/pandoc.gz && \
+    curl -o /usr/bin/pandoc-citeproc.gz \
+	 https://files.r-hub.io/pandoc/linux-64/pandoc-citeproc.gz && \
+    gzip -d /usr/bin/pandoc-citeproc.gz && \
+    chmod +x /usr/bin/pandoc /usr/bin/pandoc-citeproc
+
+RUN apt-get install -y aspell aspell-en
 
 RUN rm -rf /var/lib/apt/lists/*
 

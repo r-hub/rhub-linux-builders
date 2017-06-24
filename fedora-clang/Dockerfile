@@ -58,7 +58,15 @@ RUN dnf install -y valgrind
 
 RUN dnf install -y qpdf
 
-RUN dnf install -y pandoc pandoc-citeproc
+RUN curl -o /usr/bin/pandoc.gz \
+         https://files.r-hub.io/pandoc/linux-64/pandoc.gz && \
+    gzip -d /usr/bin/pandoc.gz && \
+    curl -o /usr/bin/pandoc-citeproc.gz \
+	 https://files.r-hub.io/pandoc/linux-64/pandoc-citeproc.gz && \
+    gzip -d /usr/bin/pandoc-citeproc.gz && \
+    chmod +x /usr/bin/pandoc /usr/bin/pandoc-citeproc
+
+RUN dnf install -y aspell aspell-en
 
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8

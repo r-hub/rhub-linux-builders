@@ -11,6 +11,16 @@ RUN apt-get install -y --no-install-recommends qpdf
 
 RUN apt-get install -y llvm-5.0
 
+RUN curl -o /usr/bin/pandoc.gz \
+         https://files.r-hub.io/pandoc/linux-64/pandoc.gz && \
+    gzip -d /usr/bin/pandoc.gz && \
+    curl -o /usr/bin/pandoc-citeproc.gz \
+	 https://files.r-hub.io/pandoc/linux-64/pandoc-citeproc.gz && \
+    gzip -d /usr/bin/pandoc-citeproc.gz && \
+    chmod +x /usr/bin/pandoc /usr/bin/pandoc-citeproc
+
+RUN apt-get install -y aspell aspell-en
+
 ## Need to patch the R Makeconf file, to run with -g
 
 ENV RHUB_PLATFORM linux-x86_64-debian-gcc
