@@ -75,7 +75,7 @@ RUN apt-get install -y \
 
 ENV CRAN http://cran.r-project.org
 
-ENV RHUB_PLATFORM linux-x86_64-ubuntu-clang-rchk
+ENV RHUB_PLATFORM linux-x86_64-ubuntu-gcc
 ENV RBINARY /opt/R-svn/bin/R
 ENV PATH="/opt/R-svn/bin:${PATH}"
 ENV PYTHONPATH="/root/.local/lib/python2.7/site-packages"
