@@ -32,5 +32,6 @@ failed=0
 ./build-image.sh ubuntu-gcc-release            || failed=1
 
 ./build-image.sh rocker-gcc-san     --no-cache || failed=1
+./build-image.sh ubuntu-rchk        --no-cache || failed=1
 
 exit $failed
