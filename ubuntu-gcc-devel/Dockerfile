@@ -30,9 +30,4 @@ RUN cd /tmp/R-devel \
 
 RUN apt-get update && apt-get -y install apt-transport-https
 
-RUN echo "deb https://files.r-hub.io/pandoc/ubuntu-16.04/ amd64/" > \
-       /etc/apt/sources.list.d/rhub-pandoc-ubuntu-16.04.list &&     \
-    apt-get update && \
-    apt-get -y --allow-unauthenticated install pandoc pandoc-citeproc
-
 ENV RHUB_PLATFORM linux-x86_64-ubuntu-gcc
