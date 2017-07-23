@@ -2,7 +2,9 @@
 
 ## We restore R_LIBS
 ORIGRLIBS="$R_LIBS"
+cd /opt/R-svn
 . /opt/rchk/scripts/cmpconfig.inc
+cd -
 export R_LIBS="$ORIGRLIBS"
 
 ${RBINARY} CMD INSTALL "$1"

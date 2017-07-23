@@ -88,6 +88,11 @@ ENV PYTHONPATH="/home/docker/.local/lib/python2.7/site-packages"
 RUN mkdir -p /opt/R-svn/packages/lib && \
     ln -s /opt/R-svn/packages/lib /home/docker/R
 
+ADD bashrc /home/docker/.bashrc
+ADD bashrc /home/docker/.bash_profile
+
+RUN chmod +x /home/docker/.bashrc /home/docker/.bash_profile
+
 ADD rchk.sh /usr/local/bin
 
 ENV RHUB_CHECK_COMMAND rchk.sh

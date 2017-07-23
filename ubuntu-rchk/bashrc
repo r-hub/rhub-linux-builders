@@ -1,0 +1,6 @@
+## We restore R_LIBS
+export R_LIBS="/opt/R-svn/packages/lib"
+
+cd /opt/R-svn
+. /opt/rchk/scripts/cmpconfig.inc
+cd -
