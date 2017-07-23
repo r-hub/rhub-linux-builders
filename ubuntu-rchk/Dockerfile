@@ -44,12 +44,17 @@ RUN if md5sum /usr/include/c++/v1/string | grep -q bc206c6dee334d9d8d1cdcf32df6a
 
 ## Install latest WLLVM scripts from GitHub
 RUN pip install --upgrade pip  && \
-    pip install setuptools wheel --upgrade && \
-    curl -L -o /opt/master.zip https://github.com/travitch/whole-program-llvm/archive/master.zip && \
+    pip install setuptools wheel --upgrade
+
+RUN chown -R docker:docker /opt
+
+## The rest is done with an ordinary user
+USER docker
+
+RUN curl -L -o /opt/master.zip https://github.com/travitch/whole-program-llvm/archive/master.zip && \
     unzip /opt/master.zip -d /opt/ && \
     mv /opt/whole-program-llvm-master /opt/whole-program-llvm && \
     pip install wllvm --user
-
 
 ## Install rchk
 RUN curl -L -o /opt/master2.zip https://github.com/kalibera/rchk/archive/master.zip && \
@@ -58,7 +63,7 @@ RUN curl -L -o /opt/master2.zip https://github.com/kalibera/rchk/archive/master.
     cd /opt/rchk/src && \
     make
 
-ENV WLLVM=/root/.local/bin
+ENV WLLVM=/home/docker/.local/bin
 ENV LLVM=/usr/
 ENV RCHK=/opt/rchk/
 
@@ -78,14 +83,10 @@ ENV CRAN http://cran.r-project.org
 ENV RHUB_PLATFORM linux-x86_64-ubuntu-gcc
 ENV RBINARY /opt/R-svn/bin/R
 ENV PATH="/opt/R-svn/bin:${PATH}"
-ENV PYTHONPATH="/root/.local/lib/python2.7/site-packages"
+ENV PYTHONPATH="/home/docker/.local/lib/python2.7/site-packages"
 
 RUN mkdir -p /opt/R-svn/packages/lib && \
-    ln -s /opt/R-svn/packages/lib /home/docker/R && \
-    chmod 755 /root && \
-    chmod 755 /root/.local && \
-    chmod 755 /root/.local/bin && \
-    chown -R docker:docker /opt/R-svn
+    ln -s /opt/R-svn/packages/lib /home/docker/R
 
 ADD rchk.sh /usr/local/bin
 
