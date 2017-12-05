@@ -5,7 +5,7 @@ FROM rhub/debian-gcc
 MAINTAINER "r-hub admin" admin@r-hub.io
 
 ENV CRAN http://cran.r-project.org
-ENV RVERSION 3.4.2
+ENV RVERSION 3.4.3
 
 RUN rm -rf R-revised R-${RVERSION} R-${RVERSION}.tar.gz \
         && major=$(echo $RVERSION | sed 's/\..*$//') \
