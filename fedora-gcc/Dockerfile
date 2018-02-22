@@ -15,6 +15,7 @@ RUN dnf install -y \
 	java-1.8.0-openjdk \
 	bzip2-devel \
 	cairo-devel \
+	ghostscript \
 	libcurl-devel \
 	libicu-devel \
 	libjpeg-turbo-devel \

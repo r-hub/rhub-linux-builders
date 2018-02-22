@@ -25,6 +25,7 @@ RUN apt-get update \
 		curl \
 		debhelper \
 		default-jdk \
+		ghostscript \
 		groff-base \
 		less \
 		libblas-dev \

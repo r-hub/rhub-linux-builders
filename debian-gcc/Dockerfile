@@ -26,6 +26,7 @@ RUN apt-get update \
 		default-jdk \
                 gcc \
 		g++ \
+		ghostscript \
 		gfortran \
 		groff-base \
 		less \
