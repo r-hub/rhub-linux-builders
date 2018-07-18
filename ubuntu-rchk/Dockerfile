@@ -11,16 +11,19 @@ RUN apt-get update && \
     apt-get -y build-dep -y r-base-dev
 
 RUN apt-get -y install \
-	libcurl4-openssl-dev \
-	clang-3.8 \
-	llvm-3.8-dev \
-	clang\+\+-3.8 \
-	clang \
-	llvm-dev \
-	libc++-dev \
-        libc++abi-dev \
-	python-pip \
-	git
+    libcurl4-openssl-dev \
+    clang-4.0 \
+    llvm-4.0-dev \
+    clang++-4.0 \
+    llvm-4.0 \
+    libllvm4.0 \
+    libc++-dev \
+    libc++abi-dev \
+    python-pip \
+    git \
+    qpdf \
+    aspell \
+    aspell-en
 
 ## Fix a bug in C++ string header file (libc++-dev)
 ## (see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=808086)
@@ -42,41 +45,35 @@ RUN if md5sum /usr/include/c++/v1/string | grep -q bc206c6dee334d9d8d1cdcf32df6a
      : __r_(__a)\n\
  {\n #if _LIBCPP_DEBUG_LEVEL >= 2' | patch -p1; fi
 
-## Install latest WLLVM scripts from GitHub
-RUN pip install --upgrade pip  && \
-    pip install setuptools wheel --upgrade
-
+## Install latest WLLVM scripts
+RUN pip install --upgrade pip
+RUN pip install wllvm
 RUN chown -R docker:docker /opt
 
 ## The rest is done with an ordinary user
 USER docker
 
-RUN curl -L -o /opt/master.zip https://github.com/travitch/whole-program-llvm/archive/master.zip && \
-    unzip /opt/master.zip -d /opt/ && \
-    mv /opt/whole-program-llvm-master /opt/whole-program-llvm && \
-    pip install wllvm --user
-
 ## Install rchk
 RUN curl -L -o /opt/master2.zip https://github.com/kalibera/rchk/archive/master.zip && \
     unzip /opt/master2.zip -d /opt/ && \
-    mv /opt/rchk-master/ /opt/rchk/ && \
-    cd /opt/rchk/src && \
-    make
+    mv /opt/rchk-master/ /opt/rchk/
 
-ENV WLLVM=/home/docker/.local/bin
-ENV LLVM=/usr/
-ENV RCHK=/opt/rchk/
+ENV WLLVM=/usr/local/bin
+ENV LLVM=/usr/lib/llvm-4.0
+ENV RCHK=/opt/rchk
+
+RUN cd /opt/rchk/src && \
+    echo 'export WLLVM=/usr/local/bin'    > ../scripts/config.inc && \
+    echo 'export LLVM=/usr/lib/llvm-4.0' >> ../scripts/config.inc && \
+    echo 'export RCHK=/opt/rchk'         >> ../scripts/config.inc && \
+    make
 
 ## Get R sources and configure rchk
 RUN mkdir /opt/R-svn/ && \
-    svn checkout https://svn.r-project.org/R/trunk /opt/R-svn && \
-    cd /opt/R-svn/ && \
-    /opt/rchk/scripts/build_r.sh
+    svn checkout https://svn.r-project.org/R/trunk /opt/R-svn
 
-RUN apt-get install -y \
-    qpdf \
-    aspell \
-    aspell-en
+RUN cd /opt/R-svn/ && \
+    /opt/rchk/scripts/build_r.sh
 
 ENV CRAN http://cran.r-project.org
 
@@ -91,7 +88,7 @@ RUN mkdir -p /opt/R-svn/packages/lib && \
 ADD bashrc /home/docker/.bashrc
 ADD bashrc /home/docker/.bash_profile
 
-RUN chmod +x /home/docker/.bashrc /home/docker/.bash_profile
+## RUN chmod +x /home/docker/.bashrc /home/docker/.bash_profile
 
 ADD rchk.sh /usr/local/bin
 
