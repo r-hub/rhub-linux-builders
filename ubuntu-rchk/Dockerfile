@@ -8,7 +8,7 @@ RUN add-apt-repository --remove -s -y multiverse && \
     add-apt-repository -s -y multiverse
 
 RUN apt-get update && \
-    apt-get -y build-dep -y r-base-dev r-recommended
+    apt-get -y build-dep -y r-base-dev
 
 RUN apt-get -y install \
     libcurl4-openssl-dev \
