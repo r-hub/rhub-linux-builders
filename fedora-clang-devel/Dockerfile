@@ -18,7 +18,10 @@ ENV CXX /usr/bin/clang++
 ENV F77 gfortran
 ENV CPP cpp
 
+RUN yum -y install rsync
+
 RUN cd /tmp/R-devel \
+    && ./tools/rsync-recommended \
     && R_PAPERSIZE=letter                                    \
     R_BATCHSAVE="--no-save --no-restore"                     \
     ./configure --prefix=${RPREFIX} ${ROPTIONS}              \
