@@ -14,7 +14,11 @@ ENV RPREFIX /opt/R-patched
 
 ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
 
-RUN cd R-patched || cd R-rc                                      \
+RUN apt-get update \
+    && apt-get -y install rsync
+
+RUN cd R-patched || cd R-rc
+        && ./tools/rsync-recommended \                                      \
         && R_PAPERSIZE=letter                                    \
         R_BATCHSAVE="--no-save --no-restore"                     \
         PERL=/usr/bin/perl                                       \
