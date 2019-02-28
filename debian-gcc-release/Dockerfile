@@ -10,6 +10,6 @@ ENV CRAN https://cran.r-project.org
 RUN mkdir -p /opt/R
 
 RUN apt-get update &&                     \
-    apt-get -y install r-base r-base-dev
+    apt-get -y install r-base r-base-dev r-recommended
 
 ENV RHUB_PLATFORM linux-x86_64-debian-gcc
