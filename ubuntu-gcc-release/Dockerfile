@@ -17,7 +17,7 @@ RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" >> \
 RUN apt-key adv --keyserver keyserver.ubuntu.com  \
       --recv-keys E084DAB9  &&                    \
     apt-get update &&                             \
-    apt-get -y install r-base r-base-dev r-recommended
+    apt-get -y install r-base r-base-dev
 
 RUN echo "deb https://files.r-hub.io/pandoc/ubuntu-16.04/ amd64/" > \
        /etc/apt/sources.list.d/rhub-pandoc-ubuntu-16.04.list &&     \
