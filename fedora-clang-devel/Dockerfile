@@ -11,7 +11,7 @@ RUN cd /tmp \
 
 ENV RPREFIX /opt/R-devel
 
-ENV ROPTIONS --with-recommended-packages=no --enable-R-shlib --enable-R-static-lib
+ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
 
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
