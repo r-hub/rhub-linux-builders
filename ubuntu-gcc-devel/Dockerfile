@@ -14,7 +14,7 @@ ENV RPREFIX /opt/R-devel
 ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
 
 RUN apt-get update \
-    && apt-get install rsync
+    && apt-get -y install rsync
 
 RUN cd /tmp/R-devel \
     && ./tools/rsync-recommended \
