@@ -13,7 +13,11 @@ ENV RPREFIX /opt/R-devel
 
 ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
 
+RUN apt-get update \
+    && apt-get -y install rsync
+
 RUN cd /tmp/R-devel \
+    && ./tools/rsync-recommended \
     && R_PAPERSIZE=letter                                    \
     R_BATCHSAVE="--no-save --no-restore"                     \
     PERL=/usr/bin/perl                                       \
