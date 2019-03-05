@@ -12,9 +12,13 @@ RUN curl -O https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
 
 ENV RPREFIX /opt/R-patched
 
-ENV ROPTIONS --with-recommended-packages=no --enable-R-shlib --enable-R-static-lib
+ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
+
+RUN apt-get update \
+    && apt-get -y install rsync
 
 RUN cd R-patched || cd R-rc                                      \
+        && ./tools/rsync-recommended                             \
         && R_PAPERSIZE=letter                                    \
         R_BATCHSAVE="--no-save --no-restore"                     \
         PERL=/usr/bin/perl                                       \

@@ -11,14 +11,17 @@ RUN cd /tmp \
 
 ENV RPREFIX /opt/R-devel
 
-ENV ROPTIONS --with-recommended-packages=no --enable-R-shlib --enable-R-static-lib
+ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
 
 ENV CC /usr/bin/clang
 ENV CXX /usr/bin/clang++
 ENV F77 gfortran
 ENV CPP cpp
 
+RUN yum -y install rsync
+
 RUN cd /tmp/R-devel \
+    && ./tools/rsync-recommended \
     && R_PAPERSIZE=letter                                    \
     R_BATCHSAVE="--no-save --no-restore"                     \
     ./configure --prefix=${RPREFIX} ${ROPTIONS}              \
