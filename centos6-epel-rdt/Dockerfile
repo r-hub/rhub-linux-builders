@@ -8,7 +8,7 @@ RUN \
 
 RUN \
   yum install -y centos-release-scl && \
-  yum install -y devtoolset-4-gcc-c++ devtoolset-4-gcc-gfortran.x86_64
+  yum install -y devtoolset-6-gcc-c++ devtoolset-6-gcc-gfortran.x86_64
 
 RUN \
   yum install -y valgrind qpdf
