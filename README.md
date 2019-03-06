@@ -11,3 +11,5 @@ If you're interested in _running_ one of the images, you can get it from [Docker
 image            | description                               | size   | metrics | build status 
 ---------------- | ----------------------------------------- | ------ | ------- | --------------
 [debian-gcc-devel](https://hub.docker.com/r/rhub/debian-gcc-devel)            |  Debian Linux, R-devel, GCC   | [![](https://images.microbadger.com/badges/image/rhub/debian-gcc-devel.svg)](https://microbadger.com/images/rhub/debian-gcc-devel) | [![](https://img.shields.io/docker/pulls/rhub/debian-gcc-devel.svg)](https://hub.docker.com/r/rhub/debian-gcc-devel) |  [![](https://img.shields.io/docker/automated/rhub/debian-gcc-devel.svg)](https://hub.docker.com/r/rhub/debian-gcc-devel/builds)
+
+Note that these images are useful for you to run to debug your R package. For use of R+Docker for reproducible analyses, refer to the [Rocker organization](https://rocker-project.org/).
