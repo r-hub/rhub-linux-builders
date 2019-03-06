@@ -13,7 +13,7 @@ RUN \
 RUN \
   yum install -y valgrind qpdf
 
-RUN echo "source /opt/rh/devtoolset-4/enable" >> /etc/bashrc
+RUN echo "source /opt/rh/devtoolset-6/enable" >> /etc/bashrc
 
 RUN \
   curl -o /etc/yum.repos.d/rhub-pandoc-centos6.repo                   \
