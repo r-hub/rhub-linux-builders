@@ -11,7 +11,7 @@ RUN cd /tmp \
 
 ENV RPREFIX /opt/R-devel
 
-ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
+ENV ROPTIONS --with-x --with-recommended-packages --enable-R-shlib --enable-R-static-lib
 
 RUN yum -y install rsync
 
@@ -22,5 +22,9 @@ RUN cd /tmp/R-devel \
     ./configure --prefix=${RPREFIX} ${ROPTIONS}              \
     && make                                                  \
     && make install
+
+COPY xvfb-run /usr/local/bin/xvfb-run
+
+RUN chmod +x /usr/local/bin/xvfb-run
 
 ENV RHUB_PLATFORM linux-x86_64-fedora-gcc
