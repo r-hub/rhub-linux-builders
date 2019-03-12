@@ -30,6 +30,7 @@ RUN cd /tmp/R-devel \
 
 COPY xvfb-run /usr/local/bin/xvfb-run
 
-RUN chmod +x /usr/local/bin/xvfb-run
+RUN chmod +x /usr/local/bin/xvfb-run && \
+    rm -f /bin/xvfb-run /usr/bin/xvfb-run
 
 ENV RHUB_PLATFORM linux-x86_64-fedora-clang
