@@ -5,7 +5,8 @@ FROM rhub/ubuntu
 MAINTAINER "r-hub admin" admin@r-hub.io
 
 RUN add-apt-repository --remove -s -y multiverse && \
-    add-apt-repository -s -y multiverse
+    add-apt-repository -s -y "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" && \
+    add-apt-repository -s -y "deb http://archive.ubuntu.com/ubuntu/ xenial universe"
 
 RUN apt-get update && \
     apt-get -y build-dep -y r-base-dev
