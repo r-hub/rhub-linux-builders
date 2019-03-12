@@ -65,5 +65,7 @@ RUN dnf install -y aspell aspell-en
 
 RUN dnf install -y file
 
+RUN dnf install -y xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
