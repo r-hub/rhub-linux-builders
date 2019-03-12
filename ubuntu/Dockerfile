@@ -60,9 +60,6 @@ RUN apt-get update \
 		texlive-latex-extra \
 		texlive-latex-recommended \
 		tk8.6-dev \
-		t1-xfree86-nonfree \
-		ttf-xfree86-nonfree \
-		ttf-xfree86-nonfree-syriac \
 		valgrind \
 		unzip \
 		x11proto-core-dev \
