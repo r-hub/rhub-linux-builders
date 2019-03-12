@@ -66,6 +66,8 @@ RUN apt-get update \
 		xauth \
 		xdg-utils \
 		xfonts-base \
+		xfonts-100dpi \
+		xfonts-75dpi \
 		xvfb \
 		zlib1g-dev
 
