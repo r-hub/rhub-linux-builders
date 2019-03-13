@@ -19,6 +19,7 @@ RUN dnf install -y \
 	libcurl-devel \
 	libicu-devel \
 	libjpeg-turbo-devel \
+	pango-devel \
 	pcre-devel \
 	libpng-devel \
 	readline-devel \
