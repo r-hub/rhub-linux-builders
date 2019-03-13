@@ -11,7 +11,7 @@ RUN mkdir -p /opt/R
 
 RUN apt-get update && apt-get -y install apt-transport-https
 
-RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial/" >> \
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> \
        /etc/apt/sources.list
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com  \
