@@ -80,13 +80,13 @@ RUN apt-get install -y --no-install-recommends valgrind
 
 RUN apt-get install -y --no-install-recommends qpdf
 
-RUN curl -o /usr/bin/pandoc.gz \
+RUN curl -o /usr/local/bin/pandoc.gz \
          https://files.r-hub.io/pandoc/linux-64/pandoc.gz && \
-    gzip -d /usr/bin/pandoc.gz && \
-    curl -o /usr/bin/pandoc-citeproc.gz \
+    gzip -d /usr/local/bin/pandoc.gz && \
+    curl -o /usr/local/bin/pandoc-citeproc.gz \
 	 https://files.r-hub.io/pandoc/linux-64/pandoc-citeproc.gz && \
-    gzip -d /usr/bin/pandoc-citeproc.gz && \
-    chmod +x /usr/bin/pandoc /usr/bin/pandoc-citeproc
+    gzip -d /usr/local/bin/pandoc-citeproc.gz && \
+    chmod +x /usr/local/bin/pandoc /usr/local/bin/pandoc-citeproc
 
 RUN apt-get install -y aspell aspell-en
 
