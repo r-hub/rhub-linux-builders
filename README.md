@@ -24,3 +24,7 @@ image            | description                               | size   | metrics 
 
 Note that these images are useful for you to run to debug your R package. For use of R+Docker for reproducible analyses, refer to the [Rocker organization](https://rocker-project.org/).
 
+## License ##
+
+The Dockerfiles in this repository are licensed under the GPL 2 or later.
+
