@@ -1,0 +1,51 @@
+## Emacs, make this -*- mode: sh; -*-
+
+FROM rhub/debian-clang
+
+MAINTAINER "r-hub admin" admin@r-hub.io
+
+ENV CRAN http://cran.r-project.org
+
+RUN cd /tmp \
+    && svn co https://svn.r-project.org/R/trunk R-devel
+
+ENV RPREFIX /opt/R-devel
+
+ENV ROPTIONS --with-recommended-packages --enable-R-shlib --enable-R-static-lib
+
+RUN apt-get update \
+    && apt-get -y install rsync
+
+## Configure default locale,
+## see https://github.com/rocker-org/rocker/issues/19
+RUN echo "en_US.ISO-8859-15 ISO-8859-15" >> /etc/locale.gen && \
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen &&             \
+    locale-gen en_US.ISO-8859-15 &&                            \
+    locale-gen en_US.UTF-8 &&                                  \
+    /usr/sbin/update-locale LANG=en_US.ISO-8859-15             \
+    /usr/sbin/update-locale LANG=en_US.UTF-8
+
+ENV LC_ALL en_US.iso885915
+ENV LANG en_US.iso885915
+
+RUN cd /tmp/R-devel \
+    && ./tools/rsync-recommended \
+    && R_PAPERSIZE=letter                                    \
+    R_BATCHSAVE="--no-save --no-restore"                     \
+    PERL=/usr/bin/perl                                       \
+    R_UNZIPCMD=/usr/bin/unzip                                \
+    R_ZIPCMD=/usr/bin/zip                                    \
+    R_PRINTCMD=/usr/bin/lpr                                  \
+    AWK=/usr/bin/awk                                         \
+    CFLAGS="-std=gnu99 -Wall -pedantic"                      \
+    CXXFLAGS="-Wall -pedantic"                               \
+    LIBS="-lz -lbz2 -llzma"                                  \
+    CC="clang"                                               \
+    CXX="clang++"                                            \
+    ./configure --prefix=${RPREFIX} ${ROPTIONS}              \
+    && make                                                  \
+    && make install
+
+ENV RHUB_PLATFORM linux-x86_64-debian-clang
+
+RUN rm -rf /var/lib/apt/lists/*
