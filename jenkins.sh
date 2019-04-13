@@ -21,6 +21,7 @@ failed=0
 ./build-image.sh debian-clang                  || failed=1
 ./build-image.sh debian-clang-devel            || failed=1
 
+./build-image.sh fedora                        || failed=1
 ./build-image.sh fedora-clang                  || failed=1
 ./build-image.sh fedora-clang-devel --no-cache || failed=1
 ./build-image.sh fedora-gcc                    || failed=1
