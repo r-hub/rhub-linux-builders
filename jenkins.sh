@@ -13,6 +13,10 @@ docker ps -a | grep 'Exited' |  awk ' { print $1; } ' | xargs docker rm || true
 # done manually, as needed.
 
 failed=0
+./build-image.sh arch                          || failed=1
+./build-image.sh arch-gcc                      || failed=1
+./build-image.sh arch-clang                    || failed=1
+
 ./build-image.sh debian                        || failed=1
 ./build-image.sh debian-gcc                    || failed=1
 ./build-image.sh debian-gcc-devel   --no-cache || failed=1
