@@ -24,6 +24,7 @@ RUN pacman -S --noconfirm \
     libxmu \
 	libxt \
 	make \
+    r \
 	subversion \
 	tcl \
 	texinfo \
