@@ -64,6 +64,8 @@ RUN sed -i '/^#en_US.UTF-8/ s/^#//' /etc/locale.gen
 RUN locale-gen
 RUN echo LANG=en_US.UTF-8 > /etc/locale.conf
 
+ENV RHUB_PLATFORM linux-x86_64-arch
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 
