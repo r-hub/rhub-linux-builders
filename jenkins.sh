@@ -16,6 +16,7 @@ failed=0
 ./build-image.sh debian                        || failed=1
 ./build-image.sh debian-gcc                    || failed=1
 ./build-image.sh debian-gcc-devel   --no-cache || failed=1
+./build-image.sh debian-gcc-devel-nold --no-cache || failed=1
 ./build-image.sh debian-gcc-release            || failed=1
 ./build-image.sh debian-gcc-patched --no-cache || failed=1
 ./build-image.sh debian-clang                  || failed=1
