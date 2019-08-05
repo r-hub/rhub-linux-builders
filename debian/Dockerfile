@@ -13,6 +13,8 @@ RUN useradd docker \
 	&& chown docker:docker /home/docker \
 	&& addgroup docker staff
 
+RUN apt-get update && apt-get -y upgrade
+
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 	        bison \
