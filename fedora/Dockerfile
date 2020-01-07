@@ -2,6 +2,12 @@
 
 FROM fedora:latest
 
+
+## 2 lines copied from https://github.com/rocker-org/rocker/blob/749e7e9ce62a242113f447f93904e9faff7df05e/r-devel/Dockerfile#L94
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
+
+
 ## Set a default user. Available via runtime flag
 RUN useradd docker
 
