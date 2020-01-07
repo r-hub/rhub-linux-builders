@@ -22,7 +22,6 @@ RUN apt-get update \
 		curl \
 		debhelper \
 		default-jdk \
-		devscripts \
 		ghostscript \
 		groff-base \
 		less \
@@ -80,3 +79,8 @@ RUN curl -o /usr/bin/pandoc.gz \
     chmod +x /usr/bin/pandoc /usr/bin/pandoc-citeproc
 
 RUN apt-get install -y aspell aspell-en
+
+
+## lines copied from https://github.com/rocker-org/rocker/blob/749e7e9ce62a242113f447f93904e9faff7df05e/r-devel/Dockerfile#L94
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
