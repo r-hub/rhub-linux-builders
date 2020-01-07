@@ -22,6 +22,7 @@ RUN apt-get update \
 		curl \
 		debhelper \
 		default-jdk \
+		devscripts \
 		ghostscript \
 		groff-base \
 		less \
