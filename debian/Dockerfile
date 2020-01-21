@@ -57,7 +57,7 @@ RUN apt-get update \
 		texlive-extra-utils \
 		texlive-fonts-extra \
 		texlive-fonts-recommended \
-		texlive-generic-recommended \
+		texlive-plain-generic \
 		texlive-latex-base \
 		texlive-latex-extra \
 		texlive-latex-recommended \
