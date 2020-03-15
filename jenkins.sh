@@ -13,26 +13,26 @@ docker ps -a | grep 'Exited' |  awk ' { print $1; } ' | xargs docker rm || true
 # done manually, as needed.
 
 failed=0
-./build-image.sh debian                        || failed=1
-./build-image.sh debian-gcc                    || failed=1
+./build-image.sh debian             --no-cache || failed=1
+./build-image.sh debian-gcc         --no-cache || failed=1
 ./build-image.sh debian-gcc-devel   --no-cache || failed=1
 ./build-image.sh debian-gcc-devel-nold --no-cache || failed=1
 ./build-image.sh debian-gcc-release            || failed=1
 ./build-image.sh debian-gcc-patched --no-cache || failed=1
-./build-image.sh debian-clang                  || failed=1
-./build-image.sh debian-clang-devel            || failed=1
+./build-image.sh debian-clang       --no-cache || failed=1
+./build-image.sh debian-clang-devel --no-cache || failed=1
 
-./build-image.sh fedora                        || failed=1
-./build-image.sh fedora-clang                  || failed=1
+./build-image.sh fedora             --no-cache || failed=1
+./build-image.sh fedora-clang       --no-cache || failed=1
 ./build-image.sh fedora-clang-devel --no-cache || failed=1
-./build-image.sh fedora-gcc                    || failed=1
+./build-image.sh fedora-gcc         --no-cache || failed=1
 ./build-image.sh fedora-gcc-devel   --no-cache || failed=1
 
 ./build-image.sh centos6-epel                  || failed=1
 ./build-image.sh centos6-epel-rdt              || failed=1
 
-./build-image.sh ubuntu                        || failed=1
-./build-image.sh ubuntu-gcc                    || failed=1
+./build-image.sh ubuntu             --no-cache || failed=1
+./build-image.sh ubuntu-gcc         --no-cache || failed=1
 ./build-image.sh ubuntu-gcc-devel   --no-cache || failed=1
 ./build-image.sh ubuntu-gcc-release            || failed=1
 
