@@ -24,7 +24,8 @@ RUN apt-get -y install \
     git \
     qpdf \
     aspell \
-    aspell-en
+    aspell-en \
+    libpcre2-dev
 
 ## Fix a bug in C++ string header file (libc++-dev)
 ## (see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=808086)
