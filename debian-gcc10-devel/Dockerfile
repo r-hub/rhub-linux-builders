@@ -53,3 +53,6 @@ RUN cd /tmp/R-devel \
     && make install
 
 ENV RHUB_PLATFORM linux-x86_64-debian-gcc
+
+RUN mkdir -p /root/.R
+COPY Makevars /root/.R/Makevars
