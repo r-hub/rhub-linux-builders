@@ -22,3 +22,5 @@ jobs:
     - name: Build all
       run: |
         ./jenkins.sh
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
