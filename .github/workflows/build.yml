@@ -13,14 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Build all containers
-    
-   steps:
-   - name: Checkout
-     uses: action@checkout@v2
-     with:
-       fetch-depth: 10
+
+    steps:
+    - name: Checkout
+      uses: action@checkout@v2
+      with:
+        fetch-depth: 10
    
-   - name: Build all
-     run: |
-       ./jenkins.sh
- 
+    - name: Build all
+      run: |
+        ./jenkins.sh
