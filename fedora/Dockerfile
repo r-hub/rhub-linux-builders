@@ -2,6 +2,11 @@
 
 FROM fedora:latest
 
+
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
+
+
 ## Set a default user. Available via runtime flag
 RUN useradd docker
 

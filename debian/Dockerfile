@@ -4,6 +4,9 @@ FROM debian:testing
 
 MAINTAINER "R-hub admin" admin@r-hub.io
 
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
+
 ## Set a default user. Available via runtime flag
 ## Add user to 'staff' group, granting them write privileges to
 ## /usr/local/lib/R/site.library
@@ -79,3 +82,4 @@ RUN curl -o /usr/bin/pandoc.gz \
     chmod +x /usr/bin/pandoc /usr/bin/pandoc-citeproc
 
 RUN apt-get install -y aspell aspell-en
+

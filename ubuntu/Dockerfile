@@ -4,6 +4,10 @@ FROM ubuntu:16.04
 
 MAINTAINER "r-hub admin" admin@r-hub.io
 
+
+## Copy 'checkbashisms' (as a local copy from devscripts package)
+COPY checkbashisms /usr/local/bin
+
 RUN apt-get update \
         && apt-get install -y --no-install-recommends \
 	        software-properties-common \
