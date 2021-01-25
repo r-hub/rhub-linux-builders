@@ -1,5 +1,6 @@
 #! /bin/sh
 
+export DOCKER_USER=gaborcsardi
 docker login -u $DOCKER_USER -p $DOCKER_PASS   || exit 1
 
 # Do not want to exit on error now
