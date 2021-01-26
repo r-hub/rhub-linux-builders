@@ -1,6 +1,6 @@
 ## We restore R_LIBS
-export R_LIBS="/opt/R-svn/packages/lib"
+export R_LIBS="/home/docker/R-svn/packages/lib"
 
-cd /opt/R-svn
-. /opt/rchk/scripts/cmpconfig.inc
+cd /home/docker/R-svn
+. /home/docker/rchk/scripts/cmpconfig.inc
 cd -

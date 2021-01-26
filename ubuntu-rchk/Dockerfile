@@ -5,27 +5,15 @@ FROM rhub/ubuntu
 MAINTAINER "r-hub admin" admin@r-hub.io
 
 RUN add-apt-repository --remove -s -y multiverse && \
-    add-apt-repository -s -y "deb http://archive.ubuntu.com/ubuntu/ xenial multiverse" && \
-    add-apt-repository -s -y "deb http://archive.ubuntu.com/ubuntu/ xenial universe"
+    add-apt-repository -s -y "deb http://archive.ubuntu.com/ubuntu/ focal multiverse" && \
+    add-apt-repository -s -y "deb http://archive.ubuntu.com/ubuntu/ focal universe"
 
 RUN apt-get update && \
     apt-get -y build-dep -y r-base-dev
 
-RUN apt-get -y install \
-    libcurl4-openssl-dev \
-    clang-4.0 \
-    llvm-4.0-dev \
-    clang++-4.0 \
-    llvm-4.0 \
-    libllvm4.0 \
-    libc++-dev \
-    libc++abi-dev \
-    python-pip \
-    git \
-    qpdf \
-    aspell \
-    aspell-en \
-    libpcre2-dev
+RUN apt-get install -y clang llvm-dev '^clang++$' llvm libllvm10 libc++-dev libc++abi-dev
+
+RUN apt-get install -y python3-pip git rsync
 
 ## Fix a bug in C++ string header file (libc++-dev)
 ## (see https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=808086)
@@ -48,44 +36,42 @@ RUN if md5sum /usr/include/c++/v1/string | grep -q bc206c6dee334d9d8d1cdcf32df6a
  {\n #if _LIBCPP_DEBUG_LEVEL >= 2' | patch -p1; fi
 
 ## Install latest WLLVM scripts
-RUN pip install --upgrade pip
-RUN pip install wllvm
-RUN chown -R docker:docker /opt
+RUN pip3 install wllvm
 
 ## The rest is done with an ordinary user
 USER docker
+WORKDIR /home/docker
 
 ## Install rchk
-RUN curl -L -o /opt/master2.zip https://github.com/kalibera/rchk/archive/master.zip && \
-    unzip /opt/master2.zip -d /opt/ && \
-    mv /opt/rchk-master/ /opt/rchk/
+RUN git clone https://github.com/kalibera/rchk.git
+RUN cd rchk/src ; make ; cd ..
 
 ENV WLLVM=/usr/local/bin
-ENV LLVM=/usr/lib/llvm-4.0
-ENV RCHK=/opt/rchk
+ENV LLVM=/usr/lib/llvm-10
+ENV RCHK=/home/docker/rchk
 
-RUN cd /opt/rchk/src && \
+RUN cd /home/docker/rchk/src && \
     echo 'export WLLVM=/usr/local/bin'    > ../scripts/config.inc && \
     echo 'export LLVM=/usr/lib/llvm-4.0' >> ../scripts/config.inc && \
-    echo 'export RCHK=/opt/rchk'         >> ../scripts/config.inc && \
+    echo 'export RCHK=/home/docker/rchk' >> ../scripts/config.inc && \
     make
 
 ## Get R sources and configure rchk
-RUN mkdir /opt/R-svn/ && \
-    svn checkout https://svn.r-project.org/R/trunk /opt/R-svn
+RUN mkdir /home/docker/R-svn/ && \
+    svn checkout https://svn.r-project.org/R/trunk /home/docker/R-svn
 
-RUN cd /opt/R-svn/ && \
-    /opt/rchk/scripts/build_r.sh
+RUN cd /home/docker/R-svn/ && \
+    /home/docker/rchk/scripts/build_r.sh
 
 ENV CRAN http://cran.r-project.org
 
 ENV RHUB_PLATFORM linux-x86_64-ubuntu-gcc
-ENV RBINARY /opt/R-svn/bin/R
-ENV PATH="/opt/R-svn/bin:${PATH}"
+ENV RBINARY /home/docker/R-svn/bin/R
+ENV PATH="/home/docker/R-svn/bin:${PATH}"
 ENV PYTHONPATH="/home/docker/.local/lib/python2.7/site-packages"
 
-RUN mkdir -p /opt/R-svn/packages/lib && \
-    ln -s /opt/R-svn/packages/lib /home/docker/R
+RUN mkdir -p /home/docker/R-svn/packages/lib && \
+    ln -s /home/docker/R-svn/packages/lib /home/docker/R
 
 ADD bashrc /home/docker/.bashrc
 ADD bashrc /home/docker/.bash_profile

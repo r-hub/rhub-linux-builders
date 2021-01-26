@@ -9,9 +9,12 @@ ENV CRAN https://cloud.r-project.org
 ## This is for simplicity as the builder backend adds it to the PATH
 RUN mkdir -p /opt/R
 
-RUN apt-get update && apt-get -y install apt-transport-https
+RUN apt-get update && apt-get -y install apt-transport-https apt dirmngr
 
-RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran35/" >> \
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys \
+       E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+RUN echo "deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/" >> \
        /etc/apt/sources.list
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com  \
@@ -19,10 +22,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com  \
     apt-get update &&                             \
     apt-get -y install r-base r-base-dev
 
-RUN echo "deb https://files.r-hub.io/pandoc/ubuntu-16.04/ amd64/" > \
-       /etc/apt/sources.list.d/rhub-pandoc-ubuntu-16.04.list &&     \
-    apt-get update && \
-    apt-get -y --allow-unauthenticated install pandoc pandoc-citeproc
+RUN apt-get -y install pandoc pandoc-citeproc
 
 RUN apt-get -y upgrade
 

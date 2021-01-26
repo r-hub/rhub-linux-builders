@@ -1,9 +1,8 @@
 ## Emacs, make this -*- mode: sh; -*-
 
-FROM ubuntu:16.04
+FROM ubuntu:20.04
 
 MAINTAINER "r-hub admin" admin@r-hub.io
-
 
 ## Copy 'checkbashisms' (as a local copy from devscripts package)
 COPY checkbashisms /usr/local/bin
@@ -59,7 +58,6 @@ RUN apt-get update \
 		texlive-extra-utils \
 		texlive-fonts-extra \
 		texlive-fonts-recommended \
-		texlive-generic-recommended \
 		texlive-latex-base \
 		texlive-latex-extra \
 		texlive-latex-recommended \
