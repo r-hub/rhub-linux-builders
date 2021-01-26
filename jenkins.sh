@@ -25,8 +25,7 @@ failed=0
 ./build-image.sh fedora-gcc         --no-cache || failed=1
 ./build-image.sh fedora-gcc-devel   --no-cache || failed=1
 
-./build-image.sh centos6-epel                  || failed=1
-./build-image.sh centos6-epel-rdt              || failed=1
+./build-image.sh centos-epel                   || failed=1
 
 ./build-image.sh ubuntu             --no-cache || failed=1
 ./build-image.sh ubuntu-gcc         --no-cache || failed=1

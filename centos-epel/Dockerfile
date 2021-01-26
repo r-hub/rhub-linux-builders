@@ -14,4 +14,4 @@ RUN dnf -y install aspell aspell-en pandoc
 
 RUN dnf -y install glibc-langpack-en
 
-ENV RHUB_PLATFORM linux-x86_64-centos6-epel
+ENV RHUB_PLATFORM linux-x86_64-centos-epel
