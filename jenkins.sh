@@ -1,13 +1,10 @@
 #! /bin/sh
 
+export DOCKER_USER=gaborcsardi
 docker login -u $DOCKER_USER -p $DOCKER_PASS   || exit 1
 
 # Do not want to exit on error now
 set +e
-
-# Clean up unused Docker images and containers
-docker images  | grep -v latest | awk ' { print $3; } ' | xargs docker rmi || true
-docker ps -a | grep 'Exited' |  awk ' { print $1; } ' | xargs docker rm || true
 
 # We don't build the relase versions periodically, these are
 # done manually, as needed.
