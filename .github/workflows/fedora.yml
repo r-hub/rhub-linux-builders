@@ -1,0 +1,67 @@
+name: Build Fedora Linux Containers daily
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron:   '55 4 * * *'
+
+jobs:
+
+  fedora:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Build
+      run: |
+        ./build-image.sh fedora --no-cache
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
+  fedora-clang:
+    runs-on: ubuntu-latest
+    needs: fedora
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Build
+      run: |
+        ./build-image.sh fedora-clang --no-cache
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
+  fedora-clang-devel:
+    runs-on: ubuntu-latest
+    needs: fedora-clang
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Build
+      run: |
+        ./build-image.sh fedora-clang-devel --no-cache
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
+  fedora-clang-devel:
+    runs-on: ubuntu-latest
+    needs: fedora-clang
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Build
+      run: |
+        ./build-image.sh fedora-clang-devel --no-cache
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
