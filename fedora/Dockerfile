@@ -74,5 +74,7 @@ RUN dnf install -y file
 
 RUN dnf install -y xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi
 
+RUN dnf update -y
+
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
