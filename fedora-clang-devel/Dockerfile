@@ -33,4 +33,10 @@ COPY xvfb-run /usr/local/bin/xvfb-run
 RUN chmod +x /usr/local/bin/xvfb-run && \
     rm -f /bin/xvfb-run /usr/bin/xvfb-run
 
+# fedora-clang-devel on CRAN uses a special clang compiled to use libc++
+# https://www.stats.ox.ac.uk/pub/bdr/Rconfig/r-devel-linux-x86_64-fedora-clang
+RUN dnf install -y libcxx-devel && \
+    sed -i.bak -E -e 's/(CXX1?1? =.*)/\1 -stdlib=libc++/g' $($RPREFIX/bin/R RHOME)/etc/Makeconf && \
+    rm -rf $($RPREFIX/bin/R RHOME)/etc/Makeconf.bak
+
 ENV RHUB_PLATFORM linux-x86_64-fedora-clang
