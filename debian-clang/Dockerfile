@@ -4,4 +4,5 @@ FROM rhub/debian
 
 RUN apt-get update && apt-get install -y \
          clang                           \
-         gfortran
+         gfortran                        \
+	 libstdc++-11-dev
