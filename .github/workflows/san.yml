@@ -1,0 +1,21 @@
+name: Build Debian Linux Containers daily
+
+on:
+  workflow_dispatch:
+  schedule:
+  - cron:   '55 4 * * *'
+
+jobs:
+
+  rocker-gcc-san:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Build
+      run: |
+        ./build-image.sh rocker-gcc-san --no-cache
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
