@@ -11,7 +11,7 @@ RUN apt-get install -y --no-install-recommends qpdf
 
 RUN apt-get install -y llvm-14
 
-RUN apt-get install pandoc
+RUN apt-get install -y pandoc
 
 RUN apt-get install -y aspell aspell-en
 
