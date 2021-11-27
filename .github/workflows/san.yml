@@ -1,4 +1,4 @@
-name: Build Debian Linux Containers daily
+name: Build SAN Container daily
 
 on:
   workflow_dispatch:
