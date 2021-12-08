@@ -48,6 +48,20 @@ jobs:
       env:
         DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
 
+  fedora-clang-devel-san:
+    runs-on: ubuntu-latest
+    needs: fedora-clang
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 10
+    - name: Build
+      run: |
+        ./build-image.sh fedora-clang-devel-san --no-cache
+      env:
+        DOCKER_PASS: ${{ secrets.DOCKER_PASS }}
+
   fedora-gcc:
     runs-on: ubuntu-latest
     needs: fedora
