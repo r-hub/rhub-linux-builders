@@ -25,9 +25,6 @@ image            | description                               | size   | metrics 
 [rocker-gcc-san](https://hub.docker.com/r/rhub/rocker-gcc-san)            | Debian Linux, R-devel, GCC ASAN/UBSAN  | [![](https://img.shields.io/docker/image-size/rhub/rocker-gcc-san)](https://img.shields.io/docker/image-size/rhub/rocker-gcc-san)  | [![](https://img.shields.io/docker/pulls/rhub/rocker-gcc-san.svg)](https://hub.docker.com/r/rhub/rocker-gcc-san) |  [![](https://img.shields.io/docker/cloud/build/rhub/rocker-gcc-san.svg)](https://hub.docker.com/r/rhub/rocker-gcc-san/builds)
 [ubuntu-rchk](https://hub.docker.com/r/rhub/ubuntu-rchk)            | Ubuntu Linux 16.04 LTS, R-devel with rchk  | [![](https://img.shields.io/docker/image-size/rhub/ubuntu-rchk)](https://img.shields.io/docker/image-size/rhub/ubuntu-rchk)  | [![](https://img.shields.io/docker/pulls/rhub/ubuntu-rchk.svg)](https://hub.docker.com/r/rhub/ubuntu-rchk) |  [![](https://img.shields.io/docker/cloud/build/rhub/ubuntu-rchk.svg)](https://hub.docker.com/r/rhub/ubuntu-rchk/builds)
 
-
-
-
 Note that these images are useful for you to run to debug your R package. For use of R+Docker for reproducible analyses, refer to the [Rocker organization](https://rocker-project.org/).
 
 ## License ##
