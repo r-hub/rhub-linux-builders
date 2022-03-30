@@ -1,0 +1,5 @@
+CXX += -stdlib=libc++
+CXX11 += -stdlib=libc++
+CXX14 += -stdlib=libc++
+CXX17 += -stdlib=libc++
+CXX20 += -stdlib=libc++
