@@ -11,7 +11,7 @@ RUN add-apt-repository --remove -s -y multiverse && \
 RUN apt-get update && \
     apt-get -y build-dep -y r-base-dev
 
-RUN apt-get install -y clang llvm-dev '^clang++$' llvm libllvm10 libc++-dev libc++abi-dev
+RUN apt-get install -y clang-12 llvm-12-dev '^clang++-12$' llvm-12 libllvm12 libc++-12-dev libc++abi-12-dev
 
 RUN apt-get install -y python3-pip git rsync
 
@@ -43,16 +43,16 @@ USER docker
 WORKDIR /home/docker
 
 ## Install rchk
-RUN git clone https://github.com/kalibera/rchk.git
+RUN git clone -b llvm11 https://github.com/kalibera/rchk.git
 RUN cd rchk/src ; make ; cd ..
 
 ENV WLLVM=/usr/local/bin
-ENV LLVM=/usr/lib/llvm-10
+ENV LLVM=/usr/lib/llvm-12
 ENV RCHK=/home/docker/rchk
 
 RUN cd /home/docker/rchk/src && \
     echo 'export WLLVM=/usr/local/bin'    > ../scripts/config.inc && \
-    echo 'export LLVM=/usr/lib/llvm-4.0' >> ../scripts/config.inc && \
+    echo 'export LLVM=/usr/lib/llvm-12' >> ../scripts/config.inc && \
     echo 'export RCHK=/home/docker/rchk' >> ../scripts/config.inc && \
     make
 
