@@ -14,7 +14,7 @@ COPY checkbashisms /usr/local/bin
 RUN useradd docker \
 	&& mkdir /home/docker \
 	&& chown docker:docker /home/docker \
-	&& addgroup docker staff
+	&& usermod -a -G staff docker
 
 RUN apt-get update && apt-get -y upgrade
 
