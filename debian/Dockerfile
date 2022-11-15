@@ -59,6 +59,7 @@ RUN apt-get update \
 		texlive-latex-base \
 		texlive-latex-extra \
 		texlive-latex-recommended \
+        tidy \
 		tk8.6-dev \
 		valgrind \
 		unzip \
