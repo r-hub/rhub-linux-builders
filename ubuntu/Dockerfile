@@ -1,6 +1,7 @@
 ## Emacs, make this -*- mode: sh; -*-
 
 FROM ubuntu:20.04
+ARG DEBIAN_FRONTEND=noninteractive
 
 MAINTAINER "r-hub admin" admin@r-hub.io
 
