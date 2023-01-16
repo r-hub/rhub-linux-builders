@@ -1,6 +1,6 @@
 ## Emacs, make this -*- mode: sh; -*-
 
-FROM fedora:33
+FROM fedora:36
 
 
 ## Copy 'checkbashisms' (as a local copy from devscripts package)
