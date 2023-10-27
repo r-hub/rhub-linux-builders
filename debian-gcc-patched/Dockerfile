@@ -7,8 +7,8 @@ MAINTAINER "r-hub admin" admin@r-hub.io
 ENV CRAN http://cran.r-project.org
 ENV RVERSION patched
 
-RUN curl -O https://stat.ethz.ch/R/daily/R-patched.tar.bz2 \
-    && tar xjf R-patched.tar.bz2
+RUN curl -O https://stat.ethz.ch/R/daily/R-patched.tar.gz \
+    && tar xzf R-patched.tar.gz
 
 ENV RPREFIX /opt/R-patched
 
